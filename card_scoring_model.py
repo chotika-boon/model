@@ -1,8 +1,9 @@
+
 import pandas as pd
 import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from datetime import datetime
+from datetime import date
 
 class CardRecommender:
     def __init__(self):
@@ -37,5 +38,5 @@ class CardRecommender:
         df['bonus_score'] = df['benefit_detail'].apply(self.extract_bonus_score)
         df['final_score'] = df['bonus_score'] * 0.75 + df['embedding_score'] * 0.25
         df['rank_in_store'] = df.groupby('store')['final_score'].rank(ascending=False, method='min')
-        df['scored_date'] = datetime.today().strftime('%Y-%m-%d')
+        df['scored_date'] = date.today()
         return df
