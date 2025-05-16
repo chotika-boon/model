@@ -1,4 +1,4 @@
-
 pandas
 scikit-learn
 google-cloud-bigquery
+pyarrow
